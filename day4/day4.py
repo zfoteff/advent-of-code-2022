@@ -59,7 +59,8 @@ In how many assignment pairs does one range fully contain the other?
 def load_puzzle_data() -> Any:
     try:
         with open("data.txt") as f:
-            puzzle_data = f.read().splitlines()
+            print("[+] Loaded puzzle data")
+            puzzle_data = [tuple(map(str, datum.split(','))) for datum in f.read().splitlines()]
             print(puzzle_data)
         print("[+] Loaded puzzle data")
         return puzzle_data
