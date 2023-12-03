@@ -56,11 +56,14 @@ reconsideration. In this example, there are 2 such pairs.
 In how many assignment pairs does one range fully contain the other?
 """
 
+
 def load_puzzle_data() -> Any:
     try:
         with open("data.txt") as f:
             print("[+] Loaded puzzle data")
-            puzzle_data = [tuple(map(str, datum.split(','))) for datum in f.read().splitlines()]
+            puzzle_data = [
+                tuple(map(str, datum.split(","))) for datum in f.read().splitlines()
+            ]
             print(puzzle_data)
         print("[+] Loaded puzzle data")
         return puzzle_data
@@ -68,10 +71,12 @@ def load_puzzle_data() -> Any:
         print(f"[-] Failed to load puzzle data. Reason {str(e)}")
         exit(0)
 
+
 def main() -> None:
     load_puzzle_data()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     start_time = time.perf_counter()
     main()
     elapsed_time = time.perf_counter() - start_time

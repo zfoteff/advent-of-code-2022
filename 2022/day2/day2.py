@@ -5,6 +5,7 @@ from sys import exit
 from typing import List
 
 """Advent of Code day 2
+--- Part 1 ---
 The Elves begin to set up camp on the beach. To decide whose tent gets to be closest to the snack 
 storage, a giant Rock Paper Scissors tournament is already in progress.
 
@@ -30,10 +31,10 @@ Since you can't be sure if the Elf is trying to help you or trick you, you shoul
 would get if you were to follow the strategy guide.
 
 For example, suppose you were given the following strategy guide:
+    A Y
+    B X
+    C Z
 
-A Y
-B X
-C Z
 This strategy guide predicts and recommends the following:
 
 In the first round, your opponent will choose Rock (A), and you should choose Paper (Y). This ends in a win 
@@ -66,7 +67,7 @@ exactly according to your strategy guide?
 
 
 def load_puzzle_data() -> List[str]:
-    """Read puzzle input. Outputs the players' moves as a list of strings containing the opponent's 
+    """Read puzzle input. Outputs the players' moves as a list of strings containing the opponent's
     move seperated from the player's move by a space
 
     Returns:
@@ -82,6 +83,7 @@ def load_puzzle_data() -> List[str]:
 
 
 def score_round(opponent_move: str, player_move: str = "", result: str = "") -> int:
+    score = 0
     score_guide = {
         "WIN": 6,
         "DRAW": 3,
@@ -96,53 +98,49 @@ def score_round(opponent_move: str, player_move: str = "", result: str = "") -> 
 
     if len(result) > 0:
         # The user wants the results found by using the result of the game to determine the player's move
-        if opponent_move == 'A':
-            if result_options[result] == 'WIN':
-                return score_guide[result_options[result]] + score_guide[player_moves['Y']]
-            if result_options[result] == 'DRAW':
-                return score_guide[result_options[result]] + score_guide[player_moves['X']]
-            if result_options[result] == 'LOST':
-                return score_guide[result_options[result]] + score_guide[player_moves['Z']]
+        if opponent_move == "A":
+            if result_options[result] == "WIN":
+                score = score_guide[result_options[result]] + score_guide[player_moves["Y"]]
+            if result_options[result] == "DRAW":
+                score = score_guide[result_options[result]] + score_guide[player_moves["X"]]
+            if result_options[result] == "LOST":
+                score = score_guide[result_options[result]] + score_guide[player_moves["Z"]]
 
-        if opponent_move == 'B':
-            if result_options[result] == 'WIN':
-                return score_guide[result_options[result]] + score_guide[player_moves['X']]
-            if result_options[result] == 'DRAW':
-                return score_guide[result_options[result]] + score_guide[player_moves['Y']]
-            if result_options[result] == 'LOST':
-                return score_guide[result_options[result]] + score_guide[player_moves['Z']]
-        
-        if opponent_move == 'C':
-            if result_options[result] == 'WIN':
-                return score_guide[result_options[result]] + score_guide[player_moves['Z']]
-            if result_options[result] == 'DRAW':
-                return score_guide[result_options[result]] + score_guide[player_moves['Z']]
-            if result_options[result] == 'LOST':
-                return score_guide[result_options[result]] + score_guide[player_moves['Z']]
+        if opponent_move == "B":
+            if result_options[result] == "WIN":
+                score = score_guide[result_options[result]] + score_guide[player_moves["X"]]
+            if result_options[result] == "DRAW":
+                score = score_guide[result_options[result]] + score_guide[player_moves["Y"]]
+            if result_options[result] == "LOST":
+                score = score_guide[result_options[result]] + score_guide[player_moves["Z"]]
+
+        if opponent_move == "C":
+            if result_options[result] == "WIN":
+                score = score_guide[result_options[result]] + score_guide[player_moves["X"]]
+            if result_options[result] == "DRAW":
+                score = score_guide[result_options[result]] + score_guide[player_moves["Z"]]
+            if result_options[result] == "LOST":
+                score = score_guide[result_options[result]] + score_guide[player_moves["Y"]]
 
     else:
         # The user wants the results found by comparing two moves and finding the winner
         if opponent_move == "A" and player_move == "Y":
-            return score_guide["WIN"] + score_guide[player_moves[player_move]]
-
+            score = score_guide["WIN"] + score_guide[player_moves[player_move]]
         if opponent_move == "A" and player_move == "Z":
-            return score_guide["LOSS"] + score_guide[player_moves[player_move]]
-
+            score = score_guide["LOSS"] + score_guide[player_moves[player_move]]
         if opponent_move == "B" and player_move == "X":
-            return score_guide["LOSS"] + score_guide[player_moves[player_move]]
-
+            score = score_guide["LOSS"] + score_guide[player_moves[player_move]]
         if opponent_move == "B" and player_move == "Z":
-            return score_guide["WIN"] + score_guide[player_moves[player_move]]
-
+            score = score_guide["WIN"] + score_guide[player_moves[player_move]]
         if opponent_move == "C" and player_move == "X":
-            return score_guide["WIN"] + score_guide[player_moves[player_move]]
-
+            score = score_guide["WIN"] + score_guide[player_moves[player_move]]
         if opponent_move == "C" and player_move == "Y":
-            return score_guide["LOSS"] + score_guide[player_moves[player_move]]
+            score = score_guide["LOSS"] + score_guide[player_moves[player_move]]
+        else:
+            # Else, return the score for a draw and the player's corresponding move
+            score = score_guide["DRAW"] + score_guide[player_moves[player_move]]
 
-        # Else, return the score for a draw and the player's corresponding move
-        return score_guide["DRAW"] + score_guide[player_moves[player_move]]
-
+    return score
 
 def play_rock_paper_scissors(moves_list: List[str]) -> int:
     """_summary_
@@ -190,4 +188,4 @@ if __name__ == "__main__":
     start_time = time.perf_counter()
     main()
     elapsed_time = time.perf_counter() - start_time
-    print(f"[+] Completed in {elapsed_time:.3f} seconds")
+    print(f"[+] Completed in {elapsed_time:.4f} seconds")
