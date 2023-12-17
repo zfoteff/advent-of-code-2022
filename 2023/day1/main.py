@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from time import perf_counter
 from typing import List
 
@@ -61,7 +63,7 @@ def import_puzzle_data():
 def match_and_replace_digits(target_str: str) -> None:
     """Match and replace digit strings with numbers"""
     for word, digit in digits:
-        target_str.replace(word, digit)
+        target_str = target_str.replace(str(word), str(digit))
 
 
 def find_first_last_digit_sums(puzzle_input: List[str]) -> int:
@@ -78,9 +80,14 @@ def find_first_last_digit_sums(puzzle_input: List[str]) -> int:
 
 def find_sum_of_alphabetic_digits(puzzle_input: List[str]) -> int:
     """Find first and last digit in string in a list of strings with alphabetic digits"""
-    for puzzle_string in puzzle_input:
-        match_and_replace_digits(puzzle_string)
+    check = list(
+        map(
+            lambda puzzle_string: match_and_replace_digits(puzzle_string),
+            list(map(lambda data: re.sub("[0-9]", "", data), puzzle_input)),
+        )
+    )
 
+    print(list(map(lambda data: re.sub("[0-9]", "", data), puzzle_input)))
     return 0
 
 
