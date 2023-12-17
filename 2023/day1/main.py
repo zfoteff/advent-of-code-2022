@@ -54,7 +54,7 @@ digits = [
 ]
 
 
-def import_puzzle_data():
+def import_puzzle_data() -> List[str]:
     """Import puzzle data in a format best suited for the code challenge"""
     with open("puzzle-data.txt") as f:
         return [datum.strip().replace("\n", "").lower() for datum in f.readlines()]
@@ -66,7 +66,7 @@ def match_and_replace_digits(target_str: str) -> None:
         target_str = target_str.replace(str(word), str(digit))
 
 
-def find_first_last_digit_sums(puzzle_input: List[str]) -> int:
+def find_sum_of_first_and_last_digit_in_string(puzzle_input: List[str]) -> int:
     """Find first and last digit of a string in a list of strings with digits mixed with characters"""
     return sum(
         list(
@@ -97,7 +97,7 @@ def main():
     puzzle_load_time = perf_counter() - start_time
 
     part_one_start_time = perf_counter()
-    part_one_result = find_first_last_digit_sums(puzzle_data)
+    part_one_result = find_sum_of_first_and_last_digit_in_string(puzzle_data)
     part_one_end_time = perf_counter() - part_one_start_time
 
     part_two_start_time = perf_counter()
