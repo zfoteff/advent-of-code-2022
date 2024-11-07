@@ -88,6 +88,7 @@ Find the item type that corresponds to the badges of each three-Elf group. What 
 item types?
 """
 
+
 def load_puzzle_data() -> List[str]:
     try:
         with open("data.txt") as f:

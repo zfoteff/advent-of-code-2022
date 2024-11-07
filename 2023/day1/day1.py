@@ -63,7 +63,7 @@ def import_puzzle_data() -> List[str]:
 def match_and_replace_digits(target_str: str) -> None:
     """Match and replace digit strings with numbers"""
     for word, digit in digits:
-        target_str = target_str.replace(str(word), str(digit))
+        target_str = target_str.replace(word, digit)
 
 
 def find_sum_of_first_and_last_digit_in_string(puzzle_input: List[str]) -> int:

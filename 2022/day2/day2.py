@@ -100,27 +100,45 @@ def score_round(opponent_move: str, player_move: str = "", result: str = "") -> 
         # The user wants the results found by using the result of the game to determine the player's move
         if opponent_move == "A":
             if result_options[result] == "WIN":
-                score = score_guide[result_options[result]] + score_guide[player_moves["Y"]]
+                score = (
+                    score_guide[result_options[result]] + score_guide[player_moves["Y"]]
+                )
             if result_options[result] == "DRAW":
-                score = score_guide[result_options[result]] + score_guide[player_moves["X"]]
+                score = (
+                    score_guide[result_options[result]] + score_guide[player_moves["X"]]
+                )
             if result_options[result] == "LOST":
-                score = score_guide[result_options[result]] + score_guide[player_moves["Z"]]
+                score = (
+                    score_guide[result_options[result]] + score_guide[player_moves["Z"]]
+                )
 
         if opponent_move == "B":
             if result_options[result] == "WIN":
-                score = score_guide[result_options[result]] + score_guide[player_moves["X"]]
+                score = (
+                    score_guide[result_options[result]] + score_guide[player_moves["X"]]
+                )
             if result_options[result] == "DRAW":
-                score = score_guide[result_options[result]] + score_guide[player_moves["Y"]]
+                score = (
+                    score_guide[result_options[result]] + score_guide[player_moves["Y"]]
+                )
             if result_options[result] == "LOST":
-                score = score_guide[result_options[result]] + score_guide[player_moves["Z"]]
+                score = (
+                    score_guide[result_options[result]] + score_guide[player_moves["Z"]]
+                )
 
         if opponent_move == "C":
             if result_options[result] == "WIN":
-                score = score_guide[result_options[result]] + score_guide[player_moves["X"]]
+                score = (
+                    score_guide[result_options[result]] + score_guide[player_moves["X"]]
+                )
             if result_options[result] == "DRAW":
-                score = score_guide[result_options[result]] + score_guide[player_moves["Z"]]
+                score = (
+                    score_guide[result_options[result]] + score_guide[player_moves["Z"]]
+                )
             if result_options[result] == "LOST":
-                score = score_guide[result_options[result]] + score_guide[player_moves["Y"]]
+                score = (
+                    score_guide[result_options[result]] + score_guide[player_moves["Y"]]
+                )
 
     else:
         # The user wants the results found by comparing two moves and finding the winner
@@ -141,6 +159,7 @@ def score_round(opponent_move: str, player_move: str = "", result: str = "") -> 
             score = score_guide["DRAW"] + score_guide[player_moves[player_move]]
 
     return score
+
 
 def play_rock_paper_scissors(moves_list: List[str]) -> int:
     """_summary_
