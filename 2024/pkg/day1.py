@@ -1,9 +1,7 @@
-#!/usr/bin/env python3
-
 from typing import List, Tuple
 
 
-def import_puzzle_data(data_path: str) -> Tuple[List[int], List[int]]:
+def import_day_1_puzzle_data(data_path: str) -> Tuple[List[int], List[int]]:
     with open(data_path) as f:
         data = [datum.strip().replace("\n", "").split("   ") for datum in f.readlines()]
         return sorted([int(value[0]) for value in data]), sorted(
@@ -11,7 +9,9 @@ def import_puzzle_data(data_path: str) -> Tuple[List[int], List[int]]:
         )
 
 
-def part_one(puzzle_input: Tuple[List[int], List[int]]) -> int:
+def calculate_distance_between_location_ids(
+    puzzle_input: Tuple[List[int], List[int]]
+) -> int:
     """--- Part 1 ---
     You haven't even left yet and the group of Elvish Senior Historians has already hit a problem: their list of locations to check is currently empty. Eventually, someone decides that the best place to check first would be the Chief Historian's office.
 
@@ -51,7 +51,7 @@ def part_one(puzzle_input: Tuple[List[int], List[int]]) -> int:
     return sum([abs(l - r) for l, r in zip(left, right)])
 
 
-def part_two(puzzle_input: Tuple[List[int], List[int]]) -> int:
+def calculate_similarity_score(puzzle_input: Tuple[List[int], List[int]]) -> int:
     """--- Part 2 ---
     Your analysis only confirmed what everyone feared: the two lists of location IDs are indeed very different.
 
