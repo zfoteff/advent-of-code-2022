@@ -6,16 +6,11 @@ from pkg.day1 import part_one, part_two, import_puzzle_data
 
 
 def main():
-    """Runner file for 2024 advent of code submissions. Returns all puzzles with 
-    """
+    """Runner file for 2024 advent of code submissions. Returns all puzzles with timing and results"""
 
     # Day 1
     timed_advent_of_code_runner(
-        "Day 1", 
-        "./data/day-1-puzzle-data.txt", 
-        part_one, 
-        part_two, 
-        import_puzzle_data
+        "Day 1", "./data/day-1-puzzle-data.txt", part_one, part_two, import_puzzle_data
     )
 
     # Day 2
