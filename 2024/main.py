@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from time import perf_counter
 from utils.timed_runner import timed_advent_of_code_runner
 
 from pkg.day1 import (
@@ -12,6 +13,8 @@ from pkg.day2 import part_1, part_2, import_day_2_puzzle_data
 
 def main():
     """Runner file for 2024 advent of code submissions. Returns all puzzles with timing and results"""
+
+    start_time = perf_counter()
 
     # Day 1
     timed_advent_of_code_runner(
@@ -30,6 +33,9 @@ def main():
         part_2,
         import_day_2_puzzle_data,
     )
+
+    elapsed_time = perf_counter() - start_time
+    print(f"Completed AoC 2024 Runner in {elapsed_time:.4f} ms")
 
 
 if __name__ == "__main__":

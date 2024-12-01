@@ -1,15 +1,13 @@
-#!/usr/bin/env python3
-
-from typing import Callable, List
+from typing import Callable
 from time import perf_counter
 
 
 def timed_advent_of_code_runner(
     name: str,
     data_path: str,
-    part_one_function: Callable[[List[str]], int],
-    part_two_function: Callable[[List[str]], int],
-    import_puzzle_function: Callable[[List[str]], int],
+    part_one_function: Callable[..., int],
+    part_two_function: Callable[..., int],
+    import_puzzle_function: Callable[..., int],
 ) -> None:
     start_time = perf_counter()
 
@@ -27,12 +25,12 @@ def timed_advent_of_code_runner(
 
     elapsed_time = perf_counter() - start_time
 
-    spacer = "=" * 12
+    spacer = "=" * 15
     result_message = f"""
-    Part one result [{part_one_end_time:.3f} ms]: {part_one_result}
-    Part two result [{part_two_end_time:.3f} ms]: {part_two_result}
+Part one result [{part_one_end_time:.4f} ms]: {part_one_result}
+Part two result [{part_two_end_time:.4f} ms]: {part_two_result}
 
-    Loaded puzzle data: {puzzle_load_time:.3f}
-    Total elapsed time: {elapsed_time:.3f}
+Loaded puzzle data: {puzzle_load_time:.4f} ms
+Total elapsed time: {elapsed_time:.4f} ms
     """
-    print(f"{spacer}\t{name}\t{spacer}\n{result_message}")
+    print(f"{spacer} {name} {spacer}\n{result_message}")
