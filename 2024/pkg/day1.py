@@ -3,15 +3,16 @@
 from typing import List, Tuple
 
 
-
 def import_puzzle_data(data_path: str) -> Tuple[List[int], List[int]]:
     with open(data_path) as f:
         data = [datum.strip().replace("\n", "").split("   ") for datum in f.readlines()]
-        return sorted([int(value[0]) for value in data]), sorted([int(value[1]) for value in data])
+        return sorted([int(value[0]) for value in data]), sorted(
+            [int(value[1]) for value in data]
+        )
+
 
 def part_one(puzzle_input: Tuple[List[int], List[int]]) -> int:
-    """
-    === Part 1 ===
+    """--- Part 1 ---
     You haven't even left yet and the group of Elvish Senior Historians has already hit a problem: their list of locations to check is currently empty. Eventually, someone decides that the best place to check first would be the Chief Historian's office.
 
     Upon pouring into the office, everyone confirms that the Chief Historian is indeed nowhere to be found. Instead, the Elves discover an assortment of notes and lists of historically significant locations! This seems to be the planning the Chief Historian was doing before he left. Perhaps these notes can be used to determine which locations to search?
@@ -51,7 +52,7 @@ def part_one(puzzle_input: Tuple[List[int], List[int]]) -> int:
 
 
 def part_two(puzzle_input: Tuple[List[int], List[int]]) -> int:
-    """
+    """--- Part 2 ---
     Your analysis only confirmed what everyone feared: the two lists of location IDs are indeed very different.
 
     Or are they?
