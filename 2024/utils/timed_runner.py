@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from typing import Callable
 from time import perf_counter
 
@@ -27,10 +28,10 @@ def timed_advent_of_code_runner(
 
     spacer = "=" * 15
     result_message = f"""
-Part one result [{part_one_end_time:.4f} ms]: {part_one_result}
-Part two result [{part_two_end_time:.4f} ms]: {part_two_result}
+Part one result [{part_one_end_time:.4f} s]: {part_one_result}
+Part two result [{part_two_end_time:.4f} s]: {part_two_result}
 
-Loaded puzzle data: {puzzle_load_time:.4f} ms
-Total elapsed time: {elapsed_time:.4f} ms
+Loaded puzzle data: {puzzle_load_time:.4f} s
+Total elapsed time: {elapsed_time:.4f} s
     """
     print(f"{spacer} {name} {spacer}\n{result_message}")
