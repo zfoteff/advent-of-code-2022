@@ -31,7 +31,29 @@ def extract_mul_commands(puzzle_data):
 
     """
     print(puzzle_data)
-    for
+    offset = 0
+    for message_str in puzzle_data:
+        while True:
+            # Find index of first mul( in remaining string
+            start = message_str.find("mul(", offset, len(message_str))
+            if start == -1:
+                # If the string contains no more mul( substrings, break
+                break 
+
+            # Find closing )
+            end = message_str.find(")", start, len(message_str))
+            if end == -1:
+                break
+
+            print(message_str[start:end+1])
+
+            offset = start+1
+            # Reset offset to end
+
+            print("found")
+        offset = 0
+
+
     return 0
 
 
