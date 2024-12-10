@@ -48,9 +48,8 @@ def extract_mul_commands(puzzle_data):
             print(message_str[start:end+1])
 
             offset = start+1
-            # Reset offset to end
 
-            print("found")
+        # Reset offset to end
         offset = 0
 
 
