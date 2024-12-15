@@ -1,15 +1,15 @@
 #!/usr/bin/python3
+import re
 from typing import List
 
 
-def import_day_3_puzzle_data(data_path: str):
+def import_day_3_puzzle_data(data_path: str) -> List[str]:
     with open(data_path) as f:
         return [datum.strip() for datum in f.readlines()]
 
 
-def extract_mul_commands(puzzle_data):
-    """
-    --- Day 3: Mull It Over ---
+def extract_mul_commands(puzzle_data: List[str]) -> int:
+    """--- Part 1 ---
 
     "Our computers are having issues, so I have no idea if we have any Chief Historians in stock! You're welcome to check the warehouse, though," says the mildly flustered shopkeeper at the North Pole Toboggan Rental Shop. The Historians head out to take a look.
 
@@ -28,33 +28,58 @@ def extract_mul_commands(puzzle_data):
     Only the four highlighted sections are real mul instructions. Adding up the result of each instruction produces 161 (2*4 + 5*5 + 11*8 + 8*5).
 
     Scan the corrupted memory for uncorrupted mul instructions. What do you get if you add up all of the results of the multiplications?
-
     """
-    print(puzzle_data)
     offset = 0
+    result = 0
     for message_str in puzzle_data:
         while True:
             # Find index of first mul( in remaining string
             start = message_str.find("mul(", offset, len(message_str))
             if start == -1:
-                # If the string contains no more mul( substrings, break
-                break 
+                # If the string contains no more 'mul(' substrings, break
+                break
 
             # Find closing )
             end = message_str.find(")", start, len(message_str))
             if end == -1:
                 break
 
-            print(message_str[start:end+1])
+            message = message_str[start : end + 1]
+            match = re.match("mul\(\d{,10},\d{,10}\)", message)
 
-            offset = start+1
+            if match is None:
+                # If the match is malformed, move the offset forward a single space and continue parsing
+                offset = start + 1
+            else:
+                # If there is a match with mul command, calculate result
+                nums = list(map(int, message[4:-1].split(",")))
+                result += nums[0] * nums[1]
+                offset = end
 
         # Reset offset to end
         offset = 0
+    return result
 
 
-    return 0
+def part_two_day_3(puzzle_data: List[str]) -> int:
+    """--- Part Two ---
+    As you scan through the corrupted memory, you notice that some of the conditional statements are also still intact. If you handle some of the uncorrupted conditional statements in the program, you might be able to get an even more accurate result.
 
+    There are two new instructions you'll need to handle:
 
-def part_two_day_3(puzzle_data):
+    The do() instruction enables future mul instructions.
+    The don't() instruction disables future mul instructions.
+
+    Only the most recent do() or don't() instruction applies. At the beginning of the program, mul instructions are enabled.
+
+    For example:
+
+    xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))
+
+    This corrupted memory is similar to the example from before, but this time the mul(5,5) and mul(11,8) instructions are disabled because there is a don't() instruction before them. The other mul instructions function normally, including the one at the end that gets re-enabled by a do() instruction.
+
+    This time, the sum of the results is 48 (2*4 + 8*5).
+
+    Handle the new instructions; what do you get if you add up all of the results of just the enabled multiplications?
+    """
     return 0

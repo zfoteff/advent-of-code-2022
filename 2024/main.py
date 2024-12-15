@@ -19,24 +19,23 @@ def main():
     """Runner file for 2024 advent of code submissions. Returns all puzzles with timing and results"""
     start_time = perf_counter()
 
-    # Day 1                                       
-    timed_advent_of_code_runner(                  
-        "Day 1",                                  
-        "./data/day-1-puzzle-data.txt",          
-        calculate_distance_between_location_ids,  
-        calculate_similarity_score,               
-        import_day_1_puzzle_data,                 
-    )                                             
-                                                  
-    # Day 2                                       
-    timed_advent_of_code_runner(                  
-        "Day 2",                                  
-        "./data/day-2-puzzle-data.txt",           
-        reduce_to_safe_and_unsafe,                
-        reduce_to_safe_and_unsafe_with_tolerence,
-        import_day_2_puzzle_data,                 
-    )                                             
+    # Day 1
+    timed_advent_of_code_runner(
+        "Day 1",
+        "./data/day-1-puzzle-data.txt",
+        calculate_distance_between_location_ids,
+        calculate_similarity_score,
+        import_day_1_puzzle_data,
+    )
 
+    # Day 2
+    timed_advent_of_code_runner(
+        "Day 2",
+        "./data/day-2-puzzle-data.txt",
+        reduce_to_safe_and_unsafe,
+        reduce_to_safe_and_unsafe_with_tolerence,
+        import_day_2_puzzle_data,
+    )
 
     # Day 3
     timed_advent_of_code_runner(
@@ -47,14 +46,14 @@ def main():
         import_day_3_puzzle_data,
     )
 
-    # Day 4                             
-    timed_advent_of_code_runner(        
-        "Day 4",                        
-        "./data/day-4-puzzle-data.txt", 
-    )                                   
+    # # Day 4
+    # timed_advent_of_code_runner(
+    #     "Day 4",
+    #     "./data/day-4-puzzle-data.txt",
+    # )
 
     elapsed_time = perf_counter() - start_time
-    print(f"Completed AoC 2024 Runner in {elapsed_time:.4f} s")
+    print(f"Completed AoC 2024 Runner in {elapsed_time*1000:.4f} ms")
 
 
 if __name__ == "__main__":
