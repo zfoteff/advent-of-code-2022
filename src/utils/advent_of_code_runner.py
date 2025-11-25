@@ -26,7 +26,7 @@ def timed_advent_of_code_runner(
 
     elapsed_time = perf_counter() - start_time
 
-    spacer = "=" * 15
+    spacer = "=" * 16
     result_message = f"""
 Part one result [{part_one_end_time*1000:.4f} ms]: {part_one_result}
 Part two result [{part_two_end_time*1000:.4f} ms]: {part_two_result}
