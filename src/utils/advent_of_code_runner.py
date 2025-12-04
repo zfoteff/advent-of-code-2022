@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 from typing import Callable
 from time import perf_counter
 
