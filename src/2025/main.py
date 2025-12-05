@@ -1,16 +1,18 @@
-from pkg.day1 import import_day_1_puzzle_data, part_one, part_two
 from time import perf_counter
-from ..utils.advent_of_code_runner import timed_advent_of_code_runner
+
+from src.utils.advent_of_code_runner import timed_advent_of_code_runner
+from .pkg.day1 import import_day_1_puzzle_data, adjust_dials_and_count_zeros, part_two
 
 
 def main():
     start_time = perf_counter()
 
     # Day 1
+
     timed_advent_of_code_runner(
         "Day 1",
         "./data/day-1-puzzle-data.txt",
-        part_one,
+        adjust_dials_and_count_zeros,
         part_two,
         import_day_1_puzzle_data,
     )
