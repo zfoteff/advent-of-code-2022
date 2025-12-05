@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from time import perf_counter
-from src.utils.advent_of_code_runner import timed_advent_of_code_runner
+from utils.advent_of_code_runner import timed_advent_of_code_runner
 
 from pkg.day1 import (
     calculate_distance_between_location_ids,
