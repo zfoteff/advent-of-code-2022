@@ -3,11 +3,9 @@ from time import perf_counter
 
 from utils.advent_of_code_runner import timed_advent_of_code_runner
 
-VALID_YEARS = [2022, 2023, 2024, 2025]
-
 
 def run_2023_tests():
-    from pkg.aoc_2023.pkg import day1, day2, day3, day4, day5
+    from src.aoc_2023.pkg import day1, day2, day3, day4
 
     start_time = perf_counter()
 
@@ -35,6 +33,14 @@ def run_2023_tests():
         day3.import_puzzle_data,
     )
 
+    timed_advent_of_code_runner(
+        "Day 4",
+        "data/day-4-puzzle-data.txt",
+        day4.count_matches,
+        day4.part_two,
+        day4.import_puzzle_data,
+    )
+
     elapsed_time = perf_counter() - start_time
     print(f"Completed AoC 2025 Runner in {elapsed_time*1000:.4f} ms")
 
@@ -46,7 +52,20 @@ if __name__ == "__main__":
     parser.add_argument(
         "-y",
         "--year",
-        help="Run suite from selected advent of code year",
-        action="store_true",
+        help="Run suite from selected range of advent of code years",
+        nargs="*",
+        default=["2022", "2023", "2024", "2025"],
+        action="append",
     )
-    parser.add_argument("")
+
+    ADVENT_OF_CODE_FUNCTIONS = {
+        "2022": run_2023_tests,
+        "2023": run_2023_tests,
+        "2024": run_2023_tests,
+        "2025": run_2023_tests,
+    }
+
+    args = parser.parse_args()
+
+    for year in args.year:
+        ADVENT_OF_CODE_FUNCTIONS[year]()
