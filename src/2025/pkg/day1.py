@@ -11,18 +11,12 @@ def _adjust_dial_position(
     dial_adjustment_setting: str, dial_location: int
 ) -> Tuple[str, int]:
     step = (
-        int(dial_adjustment_setting[1:]) % 100 * -1
+        int(dial_adjustment_setting[1:]) * -1
         if dial_adjustment_setting[0] == "L"
-        else int(dial_adjustment_setting[1:]) % 100
+        else int(dial_adjustment_setting[1:])
     )
-    if dial_location + step > 99:
-        dial_location = 0 - (100 - dial_location) + step
-    elif dial_location + step < 0:
-        dial_location = 100 - (step + dial_location)
-    else:
-        dial_location = dial_location + step
 
-    return dial_location
+    return (dial_location + step) % 100
 
 
 def adjust_dials_and_count_zeros(puzzle_input) -> int:
