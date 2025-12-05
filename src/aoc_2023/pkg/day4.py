@@ -2,8 +2,8 @@ import re
 from typing import List, Tuple
 
 
-def import_puzzle_data() -> List[Tuple[str, ...]]:
-    with open("puzzle-data.txt") as f:
+def import_puzzle_data(puzzle_data: str) -> List[Tuple[str, ...]]:
+    with open(puzzle_data) as f:
         lines = f.readlines()
         puzzle_data = [
             tuple(re.sub(r"\s+", " ", line[10:]).replace("\n", "").strip().split(" | "))

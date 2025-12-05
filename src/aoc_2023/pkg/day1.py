@@ -17,8 +17,8 @@ digits = [
 ]
 
 
-def import_puzzle_data() -> List[str]:
-    with open("puzzle-data.txt") as f:
+def import_puzzle_data(data_path: str) -> List[str]:
+    with open(data_path) as f:
         return [datum.strip().replace("\n", "").lower() for datum in f.readlines()]
 
 

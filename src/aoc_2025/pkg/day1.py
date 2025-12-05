@@ -2,7 +2,7 @@ from typing import List
 from math import floor
 
 
-def import_day_1_puzzle_data(data_path: str) -> List[str]:
+def import_puzzle_data(data_path: str) -> List[str]:
     with open(data_path) as f:
         data = [datum.strip() for datum in f.readlines()]
         return data

@@ -1,9 +1,8 @@
 from typing import List
 
 
-def import_puzzle_data() -> List[str]:
-    """Import puzzle data in a format best suited for the code challenge"""
-    with open("puzzle-data.txt") as f:
+def import_puzzle_data(data_path: str) -> List[str]:
+    with open(data_path) as f:
         return [datum.strip().replace("\n", "") for datum in f.readlines()]
 
 
