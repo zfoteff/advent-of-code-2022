@@ -17,9 +17,7 @@ def part_one(puzzle_data: List[Tuple[int, int]]) -> int:
                 num_dict.setdefault(digit, 0)
                 num_dict[digit] += 1
 
-            if sum(num_dict.values()) % len(num_dict) == 2:
-                counter += 1
-
+            if len(setdict.values()))
     return counter
 
 
