@@ -125,10 +125,12 @@ def run_2025_tests():
         day1.import_puzzle_data,
     )
 
-    time_advent_of_code_runner(
+    timed_advent_of_code_runner(
         "Day 2",
         "src/aoc_2025/data/day-2-puzzle-data.txt",
-        day1.part_one,
+        day2.part_one,
+        day2.part_two,
+        day2.import_puzzle_data,
     )
 
     elapsed_time = perf_counter() - start_time
