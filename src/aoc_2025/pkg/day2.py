@@ -10,14 +10,13 @@ def part_one(puzzle_data: List[Tuple[int, int]]) -> int:
     counter = 0
 
     for start_range, end_range in puzzle_data:
-        for num in list(map(str, range(start_range, end_range + 1))):
-            num_dict = dict()
+        for number in range(start_range, end_range + 1):
+            num = str(number)
+            if len(num) % 2 != 0:
+                continue
+            if num[: len(num) // 2] == num[len(num) // 2 :]:
+                counter += number
 
-            for digit in num:
-                num_dict.setdefault(digit, 0)
-                num_dict[digit] += 1
-
-            if len(setdict.values()))
     return counter
 
 

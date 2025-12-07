@@ -113,7 +113,7 @@ def run_2024_tests():
 
 
 def run_2025_tests():
-    from src.aoc_2025.pkg import day1, day2
+    from src.aoc_2025.pkg import day1, day2, day3
 
     start_time = perf_counter()
 
@@ -131,6 +131,14 @@ def run_2025_tests():
         day2.part_one,
         day2.part_two,
         day2.import_puzzle_data,
+    )
+
+    timed_advent_of_code_runner(
+        "Day 3",
+        "src/aoc_2025/data/day-3-puzzle-data.txt",
+        day3.part_one,
+        day3.part_two,
+        day3.import_puzzle_data,
     )
 
     elapsed_time = perf_counter() - start_time
