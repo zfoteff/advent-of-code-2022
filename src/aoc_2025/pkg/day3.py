@@ -8,9 +8,20 @@ def import_puzzle_data(puzzle_data: str) -> List[str]:
 
 def part_one(puzzle_data: List[str]) -> int:
     counter = 0
-    for data in list(map(list, puzzle_data)):
-        data.sort(reverse=True)
-        counter += int(data[0] + data[1])
+
+    for data in puzzle_data:
+        first_battery = 0
+        second_battery = 0
+        print(data)
+
+        for digit in data:
+            if int(digit) > first_battery and int(digit) > second_battery:
+                first_battery = int(digit)
+            elif int(digit) <= first_battery and int(digit) > second_battery:
+                second_battery = int(digit)
+
+        print(f"{first_battery}{second_battery}")
+        counter += int(f"{first_battery}{second_battery}")
 
     return counter
 

@@ -135,7 +135,7 @@ def run_2025_tests():
 
     timed_advent_of_code_runner(
         "Day 3",
-        "src/aoc_2025/data/day-3-puzzle-data.txt",
+        "src/aoc_2025/data/day-3-puzzle-data-test.txt",
         day3.part_one,
         day3.part_two,
         day3.import_puzzle_data,
